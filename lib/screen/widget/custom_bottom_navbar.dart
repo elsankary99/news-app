@@ -6,10 +6,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({
     super.key,
     required this.tabs,
+    required this.onTabChange,
+    required this.selectedIndex,
   });
 
   final List<GButton> tabs;
-
+  final void Function(int) onTabChange;
+  final int selectedIndex;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,11 +32,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 22),
           child: GNav(
+              selectedIndex: selectedIndex,
+              onTabChange: onTabChange,
               haptic: true, // haptic feedback
               tabBorderRadius: 30,
               curve: Curves.easeInOut, // tab animation curves
               duration:
-                  const Duration(milliseconds: 300), // tab animation duration
+                  const Duration(milliseconds: 500), // tab animation duration
               gap: 12, // the tab button gap between icon and text
               color: AppColor.lightGrey, // unselected icon color
               activeColor:
