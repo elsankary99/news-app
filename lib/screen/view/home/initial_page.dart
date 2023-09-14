@@ -4,9 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:news_app/screen/view/home_page.dart';
-import 'package:news_app/screen/widget/custom_bottom_navbar.dart';
-import 'package:news_app/screen/widget/custom_home_appbar.dart';
+import 'package:news_app/screen/view/home/global_news.dart';
+import 'package:news_app/screen/view/home/home_page.dart';
+import 'package:news_app/screen/widget/home_widgets/custom_bottom_navbar.dart';
+import 'package:news_app/screen/widget/home_widgets/custom_home_appbar.dart';
 
 @RoutePage()
 class InitialPage extends StatefulWidget {
@@ -27,7 +28,7 @@ class _InitialPageState extends State<InitialPage>
     ),
     GButton(
       icon: FontAwesomeIcons.globe,
-      text: 'Likes',
+      text: 'Global',
     ),
     GButton(
       icon: FontAwesomeIcons.bookmark,
@@ -41,7 +42,7 @@ class _InitialPageState extends State<InitialPage>
 
   List<Widget> children = [
     const HomePage(),
-    const Center(child: Text("2")),
+    const GlobalNewsPage(),
     const Center(child: Text("3")),
     const Center(child: Text("4")),
   ];

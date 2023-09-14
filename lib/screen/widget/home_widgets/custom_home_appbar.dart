@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:news_app/screen/widget/custom_icon.dart';
+import 'package:news_app/core/router/app_router.dart';
+import 'package:news_app/screen/widget/home_widgets/custom_icon.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({
@@ -9,18 +11,20 @@ class CustomHomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomIcon(icon: FontAwesomeIcons.bars),
+              const CustomIcon(icon: FontAwesomeIcons.bars),
               Row(
                 children: [
-                  CustomIcon(icon: FontAwesomeIcons.magnifyingGlass),
-                  CustomIcon(icon: FontAwesomeIcons.bell),
+                  CustomIcon(
+                      onTap: () => context.router.push(const SearchRoute()),
+                      icon: FontAwesomeIcons.magnifyingGlass),
+                  const CustomIcon(icon: FontAwesomeIcons.bell),
                 ],
               )
             ],

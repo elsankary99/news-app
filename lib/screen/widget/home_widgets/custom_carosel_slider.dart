@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:news_app/core/constant/app_color.dart';
 
 class CarouselWithIndicatorDemo extends StatefulWidget {
@@ -71,7 +72,7 @@ final List<Widget> imageSliders = imgList
         borderRadius: const BorderRadius.all(Radius.circular(15)),
         child: Stack(
           children: [
-            Image.network(item, fit: BoxFit.cover, width: 1000.0),
+            Positioned.fill(child: Image.network(item, fit: BoxFit.cover)),
             Positioned(
               bottom: 0.0,
               left: 0.0,
@@ -89,16 +90,55 @@ final List<Widget> imageSliders = imgList
                 ),
                 padding: const EdgeInsets.symmetric(
                     vertical: 10.0, horizontal: 20.0),
-                child: Text(
-                  'No. ${imgList.indexOf(item)} image',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
               ),
             ),
+            const Positioned(
+                bottom: 15,
+                left: 15,
+                right: 0.0,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "CNN Indonesia",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: CircleAvatar(
+                            radius: 8,
+                            backgroundColor: AppColor.primaryColor,
+                            child: Icon(
+                              FontAwesomeIcons.check,
+                              size: 10,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "6 hour ago",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "Indonesia Indonesia Indonesia Indonesia ",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ))
           ],
         )))
     .toList();

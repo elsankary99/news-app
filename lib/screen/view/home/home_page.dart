@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/core/extension/media_query.dart';
-import 'package:news_app/screen/widget/custom_carosel_slider.dart';
-import 'package:news_app/screen/widget/custom_text.dart';
-import 'package:news_app/screen/widget/news_card.dart';
+import 'package:news_app/screen/widget/home_widgets/custom_carosel_slider.dart';
+import 'package:news_app/screen/widget/home_widgets/custom_text.dart';
+import 'package:news_app/screen/widget/home_widgets/news_card.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
