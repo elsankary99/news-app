@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:news_app/screen/view/home_page.dart';
 import 'package:news_app/screen/widget/custom_bottom_navbar.dart';
 import 'package:news_app/screen/widget/custom_home_appbar.dart';
 
@@ -39,7 +40,7 @@ class _InitialPageState extends State<InitialPage>
   ];
 
   List<Widget> children = [
-    const Center(child: Text("1")),
+    const HomePage(),
     const Center(child: Text("2")),
     const Center(child: Text("3")),
     const Center(child: Text("4")),

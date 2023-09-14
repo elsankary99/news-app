@@ -34,20 +34,16 @@ class CustomBottomNavigationBar extends StatelessWidget {
           child: GNav(
               selectedIndex: selectedIndex,
               onTabChange: onTabChange,
-              haptic: true, // haptic feedback
+              haptic: true,
               tabBorderRadius: 30,
-              curve: Curves.easeInOut, // tab animation curves
-              duration:
-                  const Duration(milliseconds: 500), // tab animation duration
-              gap: 12, // the tab button gap between icon and text
-              color: AppColor.lightGrey, // unselected icon color
-              activeColor:
-                  Theme.of(context).cardColor, // selected icon and text color
-              iconSize: 20, // tab button icon size
-              tabBackgroundColor:
-                  AppColor.primaryColor, // selected tab background color
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 15, vertical: 10), // navigation bar padding
+              curve: Curves.easeInOut,
+              duration: const Duration(milliseconds: 500),
+              gap: 12,
+              color: AppColor.lightGrey,
+              activeColor: Theme.of(context).cardColor,
+              iconSize: 20,
+              tabBackgroundColor: AppColor.primaryColor,
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               tabs: tabs),
         ),
       ),
