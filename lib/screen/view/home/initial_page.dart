@@ -4,8 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:news_app/screen/view/home/custom_draewr.dart';
 import 'package:news_app/screen/view/home/global_news.dart';
 import 'package:news_app/screen/view/home/home_page.dart';
+import 'package:news_app/screen/view/home/prfile_page.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_bottom_navbar.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_home_appbar.dart';
 
@@ -20,6 +22,7 @@ class InitialPage extends StatefulWidget {
 class _InitialPageState extends State<InitialPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   int selectedIndex = 0;
   List<GButton> tabs = const [
     GButton(
@@ -32,7 +35,7 @@ class _InitialPageState extends State<InitialPage>
     ),
     GButton(
       icon: FontAwesomeIcons.bookmark,
-      text: 'Search',
+      text: 'Mark',
     ),
     GButton(
       icon: FontAwesomeIcons.user,
@@ -44,7 +47,7 @@ class _InitialPageState extends State<InitialPage>
     const HomePage(),
     const GlobalNewsPage(),
     const Center(child: Text("3")),
-    const Center(child: Text("4")),
+    const ProfilePage(),
   ];
   @override
   void initState() {
@@ -60,12 +63,15 @@ class _InitialPageState extends State<InitialPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      drawer: const CustomDrawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 75,
         backgroundColor: Colors.white,
         elevation: 0,
-        flexibleSpace: const CustomHomeAppBar(),
+        automaticallyImplyLeading: false,
+        flexibleSpace: CustomHomeAppBar(scaffoldKey: scaffoldKey),
       ),
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),

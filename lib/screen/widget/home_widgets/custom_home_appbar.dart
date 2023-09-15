@@ -7,8 +7,9 @@ import 'package:news_app/screen/widget/home_widgets/custom_icon.dart';
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({
     super.key,
+    required this.scaffoldKey,
   });
-
+  final GlobalKey<ScaffoldState> scaffoldKey;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,7 +19,11 @@ class CustomHomeAppBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CustomIcon(icon: FontAwesomeIcons.bars),
+              CustomIcon(
+                  onTap: () {
+                    scaffoldKey.currentState!.openDrawer();
+                  },
+                  icon: FontAwesomeIcons.bars),
               Row(
                 children: [
                   CustomIcon(
