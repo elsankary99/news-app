@@ -49,7 +49,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
                     borderRadius: BorderRadius.circular(99),
                     color: (_current == entry.key
                             ? AppColor.primaryColor
-                            : AppColor.lightGrey)
+                            : AppColor.grey)
                         .withOpacity(_current == entry.key ? 0.9 : 0.4)),
               ),
             );

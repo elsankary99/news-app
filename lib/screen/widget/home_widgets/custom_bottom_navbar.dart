@@ -26,8 +26,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
             ),
           ],
           border: Border(
-              top: BorderSide(
-                  color: AppColor.lightGrey.withOpacity(0.2), width: 2))),
+              top:
+                  BorderSide(color: AppColor.grey.withOpacity(0.2), width: 2))),
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 22),
@@ -39,7 +39,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               curve: Curves.easeInOut,
               duration: const Duration(milliseconds: 500),
               gap: 12,
-              color: AppColor.lightGrey,
+              color: AppColor.grey,
               activeColor: Theme.of(context).cardColor,
               iconSize: 20,
               tabBackgroundColor: AppColor.primaryColor,
