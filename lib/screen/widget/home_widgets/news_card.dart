@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:news_app/core/constant/app_string.dart';
 import 'package:news_app/core/extension/media_query.dart';
+import 'package:news_app/data/model/news_model.dart';
 
 class NewsCard extends StatelessWidget {
-  final String image;
+  final NewsModel news;
   const NewsCard({
     super.key,
-    required this.image,
+    required this.news,
   });
 
   @override
@@ -22,7 +25,7 @@ class NewsCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
                   height: context.height * 0.17,
-                  image,
+                  news.urlToImage ?? AppStrings.notFoundImage,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -34,27 +37,30 @@ class NewsCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Sports",
-                    style: TextStyle(
+                  Text(
+                    news.source!.name ?? "Un Known",
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.grey),
                   ),
                   Text(
-                    "What Training Do Volleyball Players Need? ",
+                    news.description ?? "",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge!
                         .copyWith(fontSize: 16),
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         maxRadius: 16,
                       ),
                       Text(
-                        "Elsankary  " "•" "  FEB 5 2032",
-                        style: TextStyle(
+                        DateFormat("MMM d, yyyy")
+                            .format(DateTime.parse(news.publishedAt!)),
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.grey),
                       ),
                     ],

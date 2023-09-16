@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/screen/widget/home_widgets/custom_carosel_slider.dart';
+import 'package:news_app/provider/global_news_provider.dart';
 import 'package:news_app/screen/widget/home_widgets/news_card.dart';
 
 class GlobalNewsPage extends ConsumerWidget {
@@ -22,14 +22,22 @@ class GlobalNewsPage extends ConsumerWidget {
             height: 5,
           ),
           Expanded(
-              child: ListView.builder(
-            padding: const EdgeInsets.only(top: 8),
-            itemCount: 20,
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return NewsCard(image: imgList[0]);
-            },
-          ))
+              child: ref.watch(globalNewsProvider).when(
+                    data: (data) => data.isNotEmpty
+                        ? ListView.builder(
+                            padding: const EdgeInsets.only(top: 8),
+                            itemCount: data.length,
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return NewsCard(news: data[index]);
+                            },
+                          )
+                        : const Center(child: Text("No Result Found")),
+                    error: (error, _) => Center(child: Text(error.toString())),
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ))
         ],
       ),
     );

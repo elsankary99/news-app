@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/core/extension/media_query.dart';
 import 'package:news_app/core/router/app_router.dart';
+import 'package:news_app/provider/recommendation_news_provider.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_carosel_slider.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_text.dart';
 import 'package:news_app/screen/widget/home_widgets/news_card.dart';
@@ -24,18 +25,27 @@ class HomePage extends ConsumerWidget {
             title: "Recommendation",
             onPressed: () => context.router.push(const RecommendationRoute())),
         const SizedBox(height: 10),
+        //TODO:(4)
+
         Expanded(
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: imgList.length,
-            itemBuilder: (context, index) {
-              return NewsCard(
-                image: imgList[index],
-              );
-            },
-          ),
+          child: ref.watch(recommendationProvider).when(
+                data: (data) => data.isNotEmpty
+                    ? ListView.builder(
+                        padding: const EdgeInsets.only(top: 8),
+                        itemCount: 6,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return NewsCard(news: data[index]);
+                        },
+                      )
+                    : const Center(child: Text("No Result Found")),
+                error: (error, _) => Center(child: Text(error.toString())),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
         ))
       ],
     );

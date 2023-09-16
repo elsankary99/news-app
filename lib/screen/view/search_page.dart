@@ -23,22 +23,24 @@ class SearchPage extends ConsumerWidget {
         elevation: 0,
         flexibleSpace: const SearchPageAppBar(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const CustomSearchText(),
-          const CustomTextFormFelid(),
-          const NewsTypeList(),
-          const SizedBox(height: 8),
-          Expanded(
-              child: ListView.builder(
-            padding: const EdgeInsets.only(top: 8),
-            itemCount: 20,
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return NewsCard(image: imgList[0]);
-            },
-          ))
+          CustomSearchText(),
+          CustomTextFormFelid(),
+          NewsTypeList(),
+          SizedBox(height: 8),
+          //TODO:(3)
+
+          // Expanded(
+          //     child: ListView.builder(
+          //   padding: const EdgeInsets.only(top: 8),
+          //   itemCount: 20,
+          //   physics: const BouncingScrollPhysics(),
+          //   itemBuilder: (context, index) {
+          //     return NewsCard(image: imgList[0]);
+          //   },
+          // ))
         ]),
       ),
     );
