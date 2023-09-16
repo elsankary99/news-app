@@ -23,7 +23,7 @@ class CustomTextFormFelid extends ConsumerWidget {
           color: AppColor.lightGrey),
       child: TextFormField(
         onFieldSubmitted: (value) {
-          ref.read(searchNewsProvider(value));
+          ref.read(searchKeywordProvider.notifier).state = value;
           log(value);
         },
         decoration: const InputDecoration(

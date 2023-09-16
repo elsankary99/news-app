@@ -39,7 +39,9 @@ dependencies:
   flutter_riverpod: ^2.4.0
   font_awesome_flutter: ^10.5.0
   google_nav_bar: ^5.0.6
+  infinite_scroll_pagination: 
   intl: ^0.18.1
+  riverpod_infinite_scroll: 
   shimmer: ^3.0.0
 
 dev_dependencies:
