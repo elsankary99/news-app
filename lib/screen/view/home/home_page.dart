@@ -25,8 +25,6 @@ class HomePage extends ConsumerWidget {
             title: "Recommendation",
             onPressed: () => context.router.push(const RecommendationRoute())),
         const SizedBox(height: 10),
-        //TODO:(4)
-
         Expanded(
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
