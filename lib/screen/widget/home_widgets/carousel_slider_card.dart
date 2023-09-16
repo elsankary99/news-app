@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -20,9 +21,10 @@ class CarouselSliderCard extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
-                child: Image.network(
-                    news.urlToImage ?? AppStrings.notFoundImage,
-                    fit: BoxFit.cover)),
+                child: CachedNetworkImage(
+              imageUrl: news.urlToImage ?? AppStrings.notFoundImage,
+              fit: BoxFit.cover,
+            )),
             Positioned.fill(
                 child: DecoratedBox(
               decoration: BoxDecoration(color: Colors.black.withOpacity(0.3)),

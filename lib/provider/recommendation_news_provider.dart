@@ -7,5 +7,5 @@ final recommendationProvider = FutureProvider<List<NewsModel>>((ref) async {
   final data = ref.read(newsRepoProvider);
 
   return data.getAllNews(
-      "${AppUrls.baseUrl}/everything?q=Apple&page=1&pageSize=20&apiKey=${AppUrls.apiKey}");
+      "/everything?q=Apple&page=1&pageSize=20&apiKey=${AppUrls.apiKey}");
 });

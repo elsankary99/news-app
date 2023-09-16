@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/screen/widget/home_widgets/custom_carosel_slider.dart';
+import 'package:news_app/provider/search_provider.dart';
 import 'package:news_app/screen/widget/home_widgets/news_card.dart';
 import 'package:news_app/screen/widget/search_widgets/Custom_search_text.dart';
 import 'package:news_app/screen/widget/search_widgets/Search_appbar.dart';
@@ -14,6 +16,7 @@ class SearchPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    log("===restart===");
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -23,24 +26,32 @@ class SearchPage extends ConsumerWidget {
         elevation: 0,
         flexibleSpace: const SearchPageAppBar(),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          CustomSearchText(),
-          CustomTextFormFelid(),
-          NewsTypeList(),
-          SizedBox(height: 8),
-          //TODO:(3)
-
-          // Expanded(
-          //     child: ListView.builder(
-          //   padding: const EdgeInsets.only(top: 8),
-          //   itemCount: 20,
-          //   physics: const BouncingScrollPhysics(),
-          //   itemBuilder: (context, index) {
-          //     return NewsCard(image: imgList[0]);
-          //   },
-          // ))
+          const CustomSearchText(),
+          const CustomTextFormFelid(),
+          const NewsTypeList(),
+          const SizedBox(height: 8),
+          Expanded(
+              child: ref.watch(searchNewsProvider("nokia")).when(
+                    skipLoadingOnRefresh: false,
+                    skipLoadingOnReload: false,
+                    data: (data) => data.isNotEmpty
+                        ? ListView.builder(
+                            padding: const EdgeInsets.only(top: 8),
+                            itemCount: data.length,
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return NewsCard(news: data[index]);
+                            },
+                          )
+                        : const Center(child: Text("No Result Found")),
+                    error: (error, _) => Center(child: Text(error.toString())),
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ))
         ]),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:news_app/core/constant/app_string.dart';
@@ -22,13 +23,12 @@ class NewsCard extends StatelessWidget {
             Expanded(
               flex: 2,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  height: context.height * 0.17,
-                  news.urlToImage ?? AppStrings.notFoundImage,
-                  fit: BoxFit.fill,
-                ),
-              ),
+                  borderRadius: BorderRadius.circular(20),
+                  child: CachedNetworkImage(
+                    imageUrl: news.urlToImage ?? AppStrings.notFoundImage,
+                    height: context.height * 0.17,
+                    fit: BoxFit.fill,
+                  )),
             ),
             const SizedBox(width: 10),
             Expanded(
