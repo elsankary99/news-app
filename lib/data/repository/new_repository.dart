@@ -28,12 +28,46 @@ class NewRepository {
     return data.map((e) => NewsModel.fromJson(e)).toList();
   }
 
-  Future<List<NewsModel>> getAllNews(String endPoint) async {
-    final data = await newsService.fetchData(endPoint);
-    List<NewsModel> newsList = [];
-    for (var news in data["articles"]) {
-      newsList.add(NewsModel.fromJson(news));
-    }
-    return newsList;
+  Future<List<NewsModel>> getGlobalNews({
+    int limit = 20,
+    int page = 1,
+  }) async {
+    final res =
+        await dio.get("https://newsapi.org/v2/everything", queryParameters: {
+      "q": "la league",
+      "page": page,
+      "pageSize": limit,
+      "apiKey": "d5749ebe78b84fc8a6eab777d8fa6551",
+    });
+    final data = res.data["articles"] as List;
+    return data.map((e) => NewsModel.fromJson(e)).toList();
+  }
+
+  Future<List<NewsModel>> recommendationNews(
+      {int limit = 20, int page = 1}) async {
+    final res =
+        await dio.get("https://newsapi.org/v2/everything", queryParameters: {
+      "q": "earthquake",
+      "apiKey": "d5749ebe78b84fc8a6eab777d8fa6551",
+      "pageSize": limit,
+      "page": page,
+    });
+    final data = res.data["articles"] as List;
+    return data.map((e) => NewsModel.fromJson(e)).toList();
+  }
+
+  Future<List<NewsModel>> breakingNews({
+    int page = 1,
+    int limit = 20,
+  }) async {
+    final res =
+        await dio.get("https://newsapi.org/v2/everything", queryParameters: {
+      "q": "Apple",
+      "page": page,
+      "pageSize": limit,
+      "apiKey": "d5749ebe78b84fc8a6eab777d8fa6551",
+    });
+    final data = res.data["articles"] as List;
+    return data.map((e) => NewsModel.fromJson(e)).toList();
   }
 }

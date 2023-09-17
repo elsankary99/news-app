@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/core/extension/media_query.dart';
 import 'package:news_app/core/router/app_router.dart';
-import 'package:news_app/provider/recommendation_news_provider.dart';
+import 'package:news_app/provider/recommendation_provider/recommendation_news_provider.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_carosel_slider.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_text.dart';
 import 'package:news_app/screen/widget/home_widgets/news_card.dart';

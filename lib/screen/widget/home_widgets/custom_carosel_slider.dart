@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/core/constant/app_color.dart';
-import 'package:news_app/provider/breaking_news_provider.dart';
+import 'package:news_app/provider/breaking_news_provider/breaking_news_provider.dart';
 import 'package:news_app/screen/widget/home_widgets/carousel_slider_card.dart';
 
 class CarouselWithIndicatorDemo extends ConsumerStatefulWidget {

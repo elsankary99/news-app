@@ -31,6 +31,10 @@ class NewsCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     child: CachedNetworkImage(
                       imageUrl: news.urlToImage ?? AppStrings.notFoundImage,
+                      errorWidget: (context, _, error) => const Icon(
+                        FontAwesomeIcons.triangleExclamation,
+                        color: Colors.red,
+                      ),
                       height: context.height * 0.17,
                       fit: BoxFit.fill,
                     )),
