@@ -7,6 +7,7 @@ import 'package:news_app/provider/recommendation_provider/recommendation_news_pr
 import 'package:news_app/screen/widget/home_widgets/custom_carosel_slider.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_text.dart';
 import 'package:news_app/screen/widget/home_widgets/news_card.dart';
+import 'package:news_app/screen/widget/shimmer/loading_indecator.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -32,7 +33,7 @@ class HomePage extends ConsumerWidget {
                 data: (data) => data.isNotEmpty
                     ? ListView.builder(
                         padding: const EdgeInsets.only(top: 8),
-                        itemCount: 6,
+                        itemCount: 1,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
                           return NewsCard(news: data[index]);
@@ -40,8 +41,9 @@ class HomePage extends ConsumerWidget {
                       )
                     : const Center(child: Text("No Result Found")),
                 error: (error, _) => Center(child: Text(error.toString())),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
+                loading: () => const Padding(
+                  padding: EdgeInsets.all(150),
+                  child: LoadingIndicatorWidget(),
                 ),
               ),
         ))

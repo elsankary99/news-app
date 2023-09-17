@@ -6,6 +6,8 @@ import 'package:news_app/data/model/news_model.dart';
 import 'package:news_app/provider/recommendation_provider/recom_pagination_news_provider.dart';
 import 'package:news_app/screen/widget/home_widgets/news_card.dart';
 import 'package:news_app/screen/widget/search_widgets/Search_appbar.dart';
+import 'package:news_app/screen/widget/shimmer/loading_indecator.dart';
+import 'package:news_app/screen/widget/shimmer/news_card_shimmer.dart';
 import 'package:riverpod_infinite_scroll/riverpod_infinite_scroll.dart';
 
 @RoutePage()
@@ -42,6 +44,13 @@ class RecommendationPage extends ConsumerWidget {
               child: RiverPagedBuilder<int, NewsModel>(
                 firstPageKey: 1,
                 provider: recommendationPaginationProvider,
+                newPageProgressIndicatorBuilder: (context, controller) =>
+                    const NewsCardShimmer(),
+                firstPageProgressIndicatorBuilder: (context, controller) =>
+                    const Padding(
+                  padding: EdgeInsets.all(150),
+                  child: LoadingIndicatorWidget(),
+                ),
                 itemBuilder: (context, item, index) => NewsCard(news: item),
                 pagedBuilder: (controller, builder) => PagedListView(
                     pagingController: controller, builderDelegate: builder),

@@ -43,10 +43,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const RecommendationPage(),
       );
     },
-    SearchRoute.name: (routeData) {
+    SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SearchPage(),
+        child: const SplashPage(),
       );
     },
   };
@@ -133,15 +133,15 @@ class RecommendationRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SearchPage]
-class SearchRoute extends PageRouteInfo<void> {
-  const SearchRoute({List<PageRouteInfo>? children})
+/// [SplashPage]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute({List<PageRouteInfo>? children})
       : super(
-          SearchRoute.name,
+          SplashRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'SearchRoute';
+  static const String name = 'SplashRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
