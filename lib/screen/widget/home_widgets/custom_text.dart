@@ -18,10 +18,17 @@ class CustomText extends StatelessWidget {
         children: [
           Text(
             title,
-            style:
-                Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 24),
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge!
+                .copyWith(fontSize: 24, color: Theme.of(context).hintColor),
           ),
-          TextButton(onPressed: onPressed, child: const Text("View all"))
+          TextButton(
+              onPressed: onPressed,
+              child: Text(
+                "View all",
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ))
         ],
       ),
     );

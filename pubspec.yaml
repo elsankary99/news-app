@@ -43,6 +43,7 @@ dependencies:
   infinite_scroll_pagination: null
   intl: ^0.18.1
   riverpod_infinite_scroll: null
+  shared_preferences: ^2.2.1
   shimmer: ^3.0.0
 
 dev_dependencies:

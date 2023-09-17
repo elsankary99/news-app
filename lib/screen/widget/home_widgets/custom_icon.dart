@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class CustomIcon extends StatelessWidget {
   final void Function()? onTap;
   final IconData icon;
+  final Color? color;
   const CustomIcon({
     super.key,
     this.onTap,
     required this.icon,
+    this.color,
   });
 
   @override
@@ -22,7 +24,7 @@ class CustomIcon extends StatelessWidget {
             borderRadius: BorderRadius.circular(99)),
         child: Icon(
           icon,
-          color: Colors.black,
+          color: color ?? Theme.of(context).hintColor,
           size: 20,
         ),
         // Adjust the opacity and color as desired

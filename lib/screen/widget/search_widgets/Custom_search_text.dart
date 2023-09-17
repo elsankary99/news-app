@@ -7,14 +7,17 @@ class CustomSearchText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "Discover",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 42),
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 42,
+              color: Theme.of(context).hintColor),
         ),
-        Text(
+        const Text(
           "News from all around the world",
           style: TextStyle(fontSize: 13, color: Colors.grey),
         ),

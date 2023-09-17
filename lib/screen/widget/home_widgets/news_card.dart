@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:news_app/core/constant/app_string.dart';
 import 'package:news_app/core/extension/media_query.dart';
@@ -50,16 +51,19 @@ class NewsCard extends StatelessWidget {
                       news.description ?? "",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontSize: 16),
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontSize: 16, color: Theme.of(context).hintColor),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const CircleAvatar(
+                        CircleAvatar(
+                          backgroundColor: Colors.transparent,
                           maxRadius: 16,
+                          child: Icon(
+                            FontAwesomeIcons.circleUser,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         Text(
                           DateFormat("MMM d, yyyy")

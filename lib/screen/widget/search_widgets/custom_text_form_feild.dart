@@ -26,14 +26,17 @@ class CustomTextFormFelid extends ConsumerWidget {
           ref.read(searchKeywordProvider.notifier).state = value;
           log(value);
         },
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           hintText: "  Search",
+          hintStyle: const TextStyle(color: AppColor.grey),
           suffixIcon: Icon(
             FontAwesomeIcons.sliders,
+            color: Theme.of(context).primaryColor,
             size: 20,
           ),
           prefixIcon: Icon(
             FontAwesomeIcons.magnifyingGlass,
+            color: Theme.of(context).primaryColor,
             size: 20,
           ),
           border: InputBorder.none,

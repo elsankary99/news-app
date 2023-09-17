@@ -36,7 +36,7 @@ class _NewsTypeListState extends State<NewsTypeList> {
                         const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                     decoration: BoxDecoration(
                         color: selectedType == type.index
-                            ? AppColor.primaryColor
+                            ? Theme.of(context).primaryColor
                             : AppColor.lightGrey,
                         borderRadius: BorderRadius.circular(30)),
                     child: Text(

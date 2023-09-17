@@ -18,7 +18,7 @@ class NewsDetailsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: CustomScrollView(
           physics: const NeverScrollableScrollPhysics(),
           slivers: [
@@ -31,7 +31,7 @@ class NewsDetailsPage extends ConsumerWidget {
                     context.router.pop();
                   }),
               elevation: 0,
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               expandedHeight: context.height * 0.4,
               flexibleSpace: FlexibleSpaceBar(
                 background: Column(
@@ -73,7 +73,7 @@ class NewsDetailsPage extends ConsumerWidget {
                             offset: const Offset(0, -6.5),
                           ),
                         ],
-                        color: Colors.white,
+                        color: Theme.of(context).scaffoldBackgroundColor,
                         borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30))),
@@ -82,7 +82,13 @@ class NewsDetailsPage extends ConsumerWidget {
                       child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const CircleAvatar(),
+                            CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              child: Icon(
+                                FontAwesomeIcons.circleUser,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
                             const SizedBox(width: 15),
                             Text(
                               news.source!.name ?? "Un Known",

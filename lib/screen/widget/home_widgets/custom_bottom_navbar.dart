@@ -17,12 +17,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: const [
+          color: Theme.of(context).scaffoldBackgroundColor,
+          boxShadow: [
             BoxShadow(
               blurRadius: 50,
               blurStyle: BlurStyle.outer,
-              color: Colors.white,
+              color: Theme.of(context).scaffoldBackgroundColor,
             ),
           ],
           border: Border(
@@ -40,9 +40,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
               duration: const Duration(milliseconds: 500),
               gap: 12,
               color: AppColor.grey,
-              activeColor: Theme.of(context).cardColor,
+              activeColor: Theme.of(context).scaffoldBackgroundColor,
               iconSize: 20,
-              tabBackgroundColor: AppColor.primaryColor,
+              tabBackgroundColor: Theme.of(context).primaryColor,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               tabs: tabs),
         ),
