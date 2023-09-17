@@ -4,10 +4,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:news_app/screen/view/home/custom_draewr.dart';
 import 'package:news_app/screen/view/home/global_news.dart';
 import 'package:news_app/screen/view/home/home_page.dart';
 import 'package:news_app/screen/view/home/prfile_page.dart';
+import 'package:news_app/screen/view/search_page.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_bottom_navbar.dart';
 import 'package:news_app/screen/widget/home_widgets/custom_home_appbar.dart';
 
@@ -22,7 +22,6 @@ class InitialPage extends StatefulWidget {
 class _InitialPageState extends State<InitialPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   int selectedIndex = 0;
   List<GButton> tabs = const [
     GButton(
@@ -34,8 +33,8 @@ class _InitialPageState extends State<InitialPage>
       text: 'Global',
     ),
     GButton(
-      icon: FontAwesomeIcons.bookmark,
-      text: 'Mark',
+      icon: FontAwesomeIcons.magnifyingGlass,
+      text: 'Search',
     ),
     GButton(
       icon: FontAwesomeIcons.user,
@@ -46,7 +45,7 @@ class _InitialPageState extends State<InitialPage>
   List<Widget> children = [
     const HomePage(),
     const GlobalNewsPage(),
-    const Center(child: Text("3")),
+    const SearchPage(),
     const ProfilePage(),
   ];
   @override
@@ -63,15 +62,13 @@ class _InitialPageState extends State<InitialPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
-      drawer: const CustomDrawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 75,
         backgroundColor: Colors.white,
         elevation: 0,
         automaticallyImplyLeading: false,
-        flexibleSpace: CustomHomeAppBar(scaffoldKey: scaffoldKey),
+        flexibleSpace: const CustomHomeAppBar(),
       ),
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),

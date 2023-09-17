@@ -28,9 +28,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     NewsDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<NewsDetailsRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const NewsDetailsPage(),
+        child: NewsDetailsPage(
+          args.news,
+          key: args.key,
+        ),
       );
     },
     RecommendationRoute.name: (routeData) {
@@ -78,16 +82,40 @@ class InitialRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [NewsDetailsPage]
-class NewsDetailsRoute extends PageRouteInfo<void> {
-  const NewsDetailsRoute({List<PageRouteInfo>? children})
-      : super(
+class NewsDetailsRoute extends PageRouteInfo<NewsDetailsRouteArgs> {
+  NewsDetailsRoute({
+    required NewsModel news,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           NewsDetailsRoute.name,
+          args: NewsDetailsRouteArgs(
+            news: news,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'NewsDetailsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<NewsDetailsRouteArgs> page =
+      PageInfo<NewsDetailsRouteArgs>(name);
+}
+
+class NewsDetailsRouteArgs {
+  const NewsDetailsRouteArgs({
+    required this.news,
+    this.key,
+  });
+
+  final NewsModel news;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'NewsDetailsRouteArgs{news: $news, key: $key}';
+  }
 }
 
 /// generated route for
