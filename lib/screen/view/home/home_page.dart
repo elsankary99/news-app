@@ -33,7 +33,7 @@ class HomePage extends ConsumerWidget {
                 data: (data) => data.isNotEmpty
                     ? ListView.builder(
                         padding: const EdgeInsets.only(top: 8),
-                        itemCount: 1,
+                        itemCount: 6,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
                           return NewsCard(news: data[index]);

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/data/model/news_model.dart';
 import 'package:news_app/data/repository/new_repository.dart';
-import 'package:news_app/provider/search_provider.dart';
+import 'package:news_app/provider/search_provider/search_provider.dart';
 import 'package:riverpod_infinite_scroll/riverpod_infinite_scroll.dart';
 
 final easyExampleProvider =

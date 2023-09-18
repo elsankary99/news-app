@@ -37,9 +37,7 @@ class BreakingNewsPage extends ConsumerWidget {
                   .titleLarge!
                   .copyWith(fontSize: 24),
             ),
-            const SizedBox(
-              height: 5,
-            ),
+            const SizedBox(height: 15),
             Expanded(
                 child: RiverPagedBuilder<int, NewsModel>(
                     provider: breakingNewsPaginationProvider,

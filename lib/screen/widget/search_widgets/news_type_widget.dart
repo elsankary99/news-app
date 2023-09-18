@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/core/constant/app_color.dart';
 import 'package:news_app/core/enum/news_type.dart';
+import 'package:news_app/provider/search_provider/search_provider.dart';
 
-class NewsTypeList extends StatefulWidget {
+class NewsTypeList extends ConsumerStatefulWidget {
   const NewsTypeList({
     super.key,
   });
 
   @override
-  State<NewsTypeList> createState() => _NewsTypeListState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _NewsTypeListState();
 }
 
-class _NewsTypeListState extends State<NewsTypeList> {
-  int selectedType = 0;
+class _NewsTypeListState extends ConsumerState<NewsTypeList> {
+  int? selectedType;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,6 +26,7 @@ class _NewsTypeListState extends State<NewsTypeList> {
           children: [
             ...NewsType.values.map((type) => GestureDetector(
                   onTap: () {
+                    ref.read(searchKeywordProvider.notifier).state = type.type;
                     setState(() {
                       selectedType = type.index;
                     });

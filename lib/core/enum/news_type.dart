@@ -1,5 +1,5 @@
 enum NewsType {
-  all("All"),
+  technology("Technology"),
   politic("Politic"),
   sport("Sport"),
   education("Education"),

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:news_app/core/constant/app_color.dart';
-import 'package:news_app/provider/search_provider.dart';
+import 'package:news_app/provider/search_provider/search_provider.dart';
 
 class CustomTextFormFelid extends ConsumerWidget {
   const CustomTextFormFelid({
@@ -22,11 +22,14 @@ class CustomTextFormFelid extends ConsumerWidget {
           borderRadius: BorderRadius.all(Radius.circular(30)),
           color: AppColor.lightGrey),
       child: TextFormField(
+        cursorColor: Theme.of(context).primaryColor,
+        style: TextStyle(color: Theme.of(context).hintColor),
         onFieldSubmitted: (value) {
           ref.read(searchKeywordProvider.notifier).state = value;
           log(value);
         },
         decoration: InputDecoration(
+          counterStyle: const TextStyle(color: AppColor.grey),
           hintText: "  Search",
           hintStyle: const TextStyle(color: AppColor.grey),
           suffixIcon: Icon(

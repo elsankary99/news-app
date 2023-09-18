@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/core/constant/app_color.dart';
 import 'package:news_app/provider/breaking_news_provider/breaking_news_provider.dart';
 import 'package:news_app/screen/widget/home_widgets/carousel_slider_card.dart';
+import 'package:news_app/screen/widget/shimmer/loading_indecator.dart';
 
 class CarouselWithIndicatorDemo extends ConsumerStatefulWidget {
   const CarouselWithIndicatorDemo({super.key});
@@ -43,7 +44,7 @@ class _CarouselWithIndicatorState
                     ),
                 error: (error, _) => Center(child: Text(error.toString())),
                 loading: () => const Center(
-                      child: CircularProgressIndicator(),
+                      child: LoadingIndicatorWidget(),
                     ))),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
